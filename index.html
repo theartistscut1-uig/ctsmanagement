@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CTS Startup Ecosystem | CTS Management, The Artist's Cut, Next Gen Sounds</title>
+  <meta name="description" content="A unified static website for CTS Management Services, The Artist's Cut, and Next Gen Sounds." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap');
+
+    :root {
+      --navy: #0b1220;
+      --navy-2: #10192d;
+      --panel: rgba(255,255,255,0.06);
+      --line: rgba(255,255,255,0.12);
+      --gold: #d4af37;
+      --gold-soft: #f4d35e;
+      --teal: #49dcb1;
+      --muted: #aab4c7;
+      --light: #f7f8fb;
+      --shadow: 0 20px 60px rgba(0,0,0,0.25);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #08111f;
+      color: #eef2f8;
+    }
+
+    h1, h2, h3, .serif {
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    .site-shell {
+      background:
+        radial-gradient(circle at top left, rgba(244, 211, 94, 0.12), transparent 24%),
+        radial-gradient(circle at top right, rgba(73, 220, 177, 0.10), transparent 20%),
+        linear-gradient(180deg, #08111f 0%, #0b1220 38%, #0e1628 100%);
+      min-height: 100vh;
+    }
+
+    .container-width {
+      width: min(1200px, calc(100% - 2rem));
+      margin-inline: auto;
+    }
+
+    .glass {
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: var(--shadow);
+    }
+
+    .section-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .gold-gradient {
+      background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-bg {
+      background:
+        linear-gradient(rgba(5,10,20,0.78), rgba(5,10,20,0.86)),
+        url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .sub-hero-artists {
+      background:
+        linear-gradient(rgba(0,0,0,0.72), rgba(0,0,0,0.82)),
+        url('https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .chip {
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.05);
+      color: #dbe4f3;
+    }
+
+    .stat-card, .feature-card, .timeline-card, .faq-card {
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.05);
+      border-radius: 1.5rem;
+    }
+
+    .cta-button {
+      transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 36px rgba(244, 211, 94, 0.18);
+    }
+
+    .nav-link {
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 2px;
+      background: var(--gold-soft);
+      transition: width .2s ease;
+    }
+
+    .nav-link:hover::after { width: 100%; }
+  </style>
+</head>
+<body>
+  <div class="site-shell">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 border-b border-white/10 bg-[#08111f]/85 backdrop-blur-xl">
+      <div class="container-width">
+        <div class="flex items-center justify-between min-h-[78px] gap-4">
+          <a href="#top" class="flex items-center gap-3">
+            <div class="h-11 w-11 rounded-2xl bg-gradient-to-br from-[#f4d35e] to-[#d4af37] text-[#08111f] grid place-items-center font-extrabold">CTS</div>
+            <div>
+              <div class="text-sm font-semibold tracking-[0.18em] uppercase text-white">CTS Startup Ecosystem</div>
+              <div class="text-xs text-slate-400">Startup • Label • Workforce Platform</div>
+            </div>
+          </a>
+
+          <nav class="hidden md:flex items-center gap-8 text-sm text-slate-300" aria-label="Primary">
+            <a class="nav-link hover:text-white" href="#about">About</a>
+            <a class="nav-link hover:text-white" href="#ventures">Ventures</a>
+            <a class="nav-link hover:text-white" href="#artists-cut">The Artist's Cut</a>
+            <a class="nav-link hover:text-white" href="#next-gen">Next Gen Sounds</a>
+            <a class="nav-link hover:text-white" href="#contact">Contact</a>
+          </nav>
+
+          <button id="menuToggle" class="md:hidden text-white text-2xl" aria-label="Toggle menu">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+        <div id="mobileMenu" class="hidden md:hidden pb-4">
+          <div class="grid gap-3 text-sm text-slate-300">
+            <a href="#about">About</a>
+            <a href="#ventures">Ventures</a>
+            <a href="#artists-cut">The Artist's Cut</a>
+            <a href="#next-gen">Next Gen Sounds</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section id="top" class="hero-bg relative overflow-hidden">
+      <div class="container-width min-h-[92vh] flex items-center py-20">
+        <div class="grid lg:grid-cols-[1.15fr_0.85fr] gap-10 items-center w-full">
+          <div>
+            <div class="inline-flex items-center gap-2 rounded-full px-4 py-2 chip text-xs uppercase tracking-[0.18em] font-semibold">
+              <span class="h-2 w-2 rounded-full bg-[#f4d35e]"></span>
+              Real Business. Real Artists. Real Youth Operators.
+            </div>
+            <h1 class="mt-6 text-5xl sm:text-6xl lg:text-7xl leading-[0.95] text-white max-w-4xl">
+              One ecosystem.
+              <span class="gold-gradient">A real company powered by the next generation.</span>
+            </h1>
+            <p class="mt-6 max-w-3xl text-lg text-slate-300 leading-8">
+              CTS is a startup ecosystem uniting strategy, artist infrastructure, and workforce development into one connected platform — where real business operations and youth talent development happen side by side. This single-page experience brings together the parent company, The Artist's Cut, and Next Gen Sounds in one polished static site.
+            </p>
+            <div class="mt-8 flex flex-wrap gap-4">
+              <a href="#ventures" class="cta-button inline-flex items-center justify-center rounded-full bg-[#f4d35e] px-7 py-4 text-sm font-bold uppercase tracking-[0.18em] text-[#08111f]">Explore the Portfolio</a>
+              <a href="#contact" class="cta-button inline-flex items-center justify-center rounded-full border border-white/20 bg-white/5 px-7 py-4 text-sm font-bold uppercase tracking-[0.18em] text-white">Partner With Us</a>
+            </div>
+            <div class="mt-10 grid sm:grid-cols-3 gap-4 max-w-4xl">
+              <div class="stat-card p-5">
+                <div class="text-3xl font-semibold serif text-white">40+</div>
+                <p class="mt-2 text-sm text-slate-400 leading-6">Years of industry perspective shaping strategy, artist growth, and modern execution.</p>
+              </div>
+              <div class="stat-card p-5">
+                <div class="text-3xl font-semibold serif text-white">3</div>
+                <p class="mt-2 text-sm text-slate-400 leading-6">Connected ventures spanning management, distribution, and youth workforce development.</p>
+              </div>
+              <div class="stat-card p-5">
+                <div class="text-3xl font-semibold serif text-white">1</div>
+                <p class="mt-2 text-sm text-slate-400 leading-6">Unified ecosystem designed to serve creators, partners, schools, and communities.</p>
+              </div>
+            </div>
+          </div>
+
+          <aside class="glass rounded-[2rem] p-6 lg:p-7">
+            <div class="rounded-[1.5rem] border border-white/10 bg-[#08111f]/90 p-6">
+              <div class="flex items-center justify-between gap-4">
+                <div>
+                  <div class="text-xs uppercase tracking-[0.18em] text-slate-400">Ecosystem Snapshot</div>
+                  <div class="mt-2 text-3xl serif text-white">CTS Portfolio</div>
+                </div>
+                <div class="rounded-2xl bg-gradient-to-br from-[#f4d35e] to-[#d4af37] px-4 py-2 text-sm font-bold text-[#08111f]">Live Overview</div>
+              </div>
+              <div class="mt-6 grid gap-4">
+                <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <div class="text-xs uppercase tracking-[0.18em] text-slate-400">CTS Management</div>
+                  <div class="mt-2 text-xl font-semibold text-white">Strategic parent company</div>
+                  <p class="mt-2 text-sm leading-6 text-slate-400">Holding company focused on management, partnerships, and venture development.</p>
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <div class="text-xs uppercase tracking-[0.18em] text-slate-400">The Artist's Cut</div>
+                  <div class="mt-2 text-xl font-semibold text-white">Record label + distribution ecosystem</div>
+                  <p class="mt-2 text-sm leading-6 text-slate-400">A fully operational record label with its own distribution infrastructure, built around fair monetization, artist ownership, and scalable release operations — actively run in part by youth participants as a real-world learning environment.</p>
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <div class="text-xs uppercase tracking-[0.18em] text-slate-400">Next Gen Sounds</div>
+                  <div class="mt-2 text-xl font-semibold text-white">Youth workforce platform</div>
+                  <p class="mt-2 text-sm leading-6 text-slate-400">Hands-on training in music, media, AI workflows, and creative business systems.</p>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- About CTS -->
+    <section id="about" class="py-24">
+      <div class="container-width">
+        <div class="grid lg:grid-cols-2 gap-10 items-center">
+          <div>
+            <div class="text-xs uppercase tracking-[0.22em] text-[#f4d35e] font-semibold">CTS Management Services</div>
+            <h2 class="mt-3 text-4xl md:text-5xl text-white">Decades of vision. <span class="gold-gradient">Modern execution.</span></h2>
+            <p class="mt-6 text-slate-300 leading-8 text-lg">
+              CTS operates as a startup ecosystem hub, connecting entertainment expertise, business development, artist infrastructure, and educational programming. The firm is positioned as a parent company building systems rather than isolated offerings.
+            </p>
+            <p class="mt-4 text-slate-400 leading-8">
+              Instead of treating artist management, platform operations, and youth training as separate tracks, CTS aligns them into one connected operating model. That makes the brand stronger, the story clearer, and the site easier to navigate.
+            </p>
+          </div>
+          <div class="section-card rounded-[2rem] p-8">
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div class="rounded-2xl bg-white/5 p-5 border border-white/10">
+                <i class="fas fa-briefcase text-[#f4d35e] text-2xl"></i>
+                <h3 class="mt-4 text-2xl text-white">Strategy</h3>
+                <p class="mt-2 text-sm leading-6 text-slate-400">High-level strategy, partnerships, and business development across the ecosystem.</p>
+              </div>
+              <div class="rounded-2xl bg-white/5 p-5 border border-white/10">
+                <i class="fas fa-record-vinyl text-[#f4d35e] text-2xl"></i>
+                <h3 class="mt-4 text-2xl text-white">MusicTech</h3>
+                <p class="mt-2 text-sm leading-6 text-slate-400">Distribution infrastructure and scalable creator operations through The Artist's Cut.</p>
+              </div>
+              <div class="rounded-2xl bg-white/5 p-5 border border-white/10">
+                <i class="fas fa-laptop-code text-[#f4d35e] text-2xl"></i>
+                <h3 class="mt-4 text-2xl text-white">EdTech</h3>
+                <p class="mt-2 text-sm leading-6 text-slate-400">Applied learning and workforce-readiness through Next Gen Sounds.</p>
+              </div>
+              <div class="rounded-2xl bg-white/5 p-5 border border-white/10">
+                <i class="fas fa-network-wired text-[#f4d35e] text-2xl"></i>
+                <h3 class="mt-4 text-2xl text-white">Ecosystem</h3>
+                <p class="mt-2 text-sm leading-6 text-slate-400">A connected story for partners, schools, artists, and sponsors.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ventures -->
+    <section id="ventures" class="py-24 bg-black/20 border-y border-white/5">
+      <div class="container-width">
+        <div class="text-center max-w-3xl mx-auto">
+          <div class="text-xs uppercase tracking-[0.22em] text-[#f4d35e] font-semibold">Strategic Ventures</div>
+          <h2 class="mt-3 text-4xl md:text-5xl text-white">One startup, three connected ventures</h2>
+          <p class="mt-5 text-slate-400 leading-8">Each venture can stand on its own, but together they create a stronger narrative around growth, innovation, and opportunity.</p>
+        </div>
+
+        <div class="mt-14 grid lg:grid-cols-3 gap-6">
+          <article class="feature-card p-8">
+            <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-white to-slate-200 text-[#08111f] grid place-items-center text-xl">
+              <i class="fas fa-building"></i>
+            </div>
+            <h3 class="mt-6 text-3xl text-white">CTS Management</h3>
+            <p class="mt-3 text-sm uppercase tracking-[0.18em] text-[#f4d35e]">Parent Company</p>
+            <p class="mt-4 text-slate-400 leading-7">The startup brand umbrella for partnerships, business development, and venture leadership.</p>
+            <a href="#about" class="mt-6 inline-block text-sm font-semibold text-white hover:text-[#f4d35e]">View CTS overview →</a>
+          </article>
+
+          <article class="feature-card p-8">
+            <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-[#f4d35e] to-[#d4af37] text-[#08111f] grid place-items-center text-xl">
+              <i class="fas fa-record-vinyl"></i>
+            </div>
+            <h3 class="mt-6 text-3xl text-white">The Artist's Cut</h3>
+            <p class="mt-3 text-sm uppercase tracking-[0.18em] text-[#f4d35e]">Record Label + Distribution</p>
+            <p class="mt-4 text-slate-400 leading-7">A fully active record label with built-in distribution, operating on an 80/20 partnership model with real artists, real releases, and scalable infrastructure — with youth participants helping run operations as part of a hands-on learning model.</p>
+            <a href="#artists-cut" class="mt-6 inline-block text-sm font-semibold text-white hover:text-[#f4d35e]">Explore the platform →</a>
+          </article>
+
+          <article class="feature-card p-8">
+            <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-[#49dcb1] to-[#68b7ff] text-[#08111f] grid place-items-center text-xl">
+              <i class="fas fa-headphones"></i>
+            </div>
+            <h3 class="mt-6 text-3xl text-white">Next Gen Sounds</h3>
+            <p class="mt-3 text-sm uppercase tracking-[0.18em] text-[#f4d35e]">Youth Workforce Development</p>
+            <p class="mt-4 text-slate-400 leading-7">A hands-on program where young people learn music, media, AI workflows, and business operations by doing real work.</p>
+            <a href="#next-gen" class="mt-6 inline-block text-sm font-semibold text-white hover:text-[#f4d35e]">See the program →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Artist's Cut -->
+    <section id="artists-cut" class="sub-hero-artists py-24">
+      <div class="container-width">
+        <div class="grid lg:grid-cols-[1.05fr_0.95fr] gap-10 items-center">
+          <div>
+            <div class="text-xs uppercase tracking-[0.22em] text-[#f4d35e] font-semibold">The Artist's Cut</div>
+            <h2 class="mt-3 text-4xl md:text-6xl text-white">Your music. <span class="gold-gradient">Your money.</span></h2>
+            <p class="mt-6 text-lg text-slate-300 leading-8 max-w-3xl">
+              The Artist's Cut is a live, operating record label with its own distribution platform, built for the next generation of creators who need scale, ownership, and a true partnership-driven business model — and uniquely, it integrates youth participants into real operations as part of the learning ecosystem.
+            </p>
+            <div class="mt-8 grid sm:grid-cols-3 gap-4">
+              <div class="stat-card p-5">
+                <div class="text-xs uppercase tracking-[0.18em] text-slate-400">Artist Revenue</div>
+                <div class="mt-2 text-4xl serif text-white">80%</div>
+              </div>
+              <div class="stat-card p-5">
+                <div class="text-xs uppercase tracking-[0.18em] text-slate-400">Company Share</div>
+                <div class="mt-2 text-4xl serif text-white">20%</div>
+              </div>
+              <div class="stat-card p-5">
+                <div class="text-xs uppercase tracking-[0.18em] text-slate-400">Hidden Fees</div>
+                <div class="mt-2 text-4xl serif text-white">$0</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass rounded-[2rem] p-7">
+            <div class="grid gap-4">
+              <div class="rounded-2xl bg-white/5 p-5 border border-white/10">
+                <h3 class="text-2xl text-white">Label Distribution Infrastructure</h3>
+                <p class="mt-2 text-slate-400 leading-7">Active distribution across major platforms, supporting real artist releases through a label-driven infrastructure.</p>
+              </div>
+              <div class="rounded-2xl bg-white/5 p-5 border border-white/10">
+                <h3 class="text-2xl text-white">AI-Ready Scale</h3>
+                <p class="mt-2 text-slate-400 leading-7">Built for high-output creators, including artists working across large AI-assisted catalogs.</p>
+              </div>
+              <div class="rounded-2xl bg-white/5 p-5 border border-white/10">
+                <h3 class="text-2xl text-white">Amplifier Network</h3>
+                <p class="mt-2 text-slate-400 leading-7">A collaboration-first growth engine designed to support artist discovery and cross-promotion.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Next Gen Intro -->
+    <section id="next-gen" class="py-24">
+      <div class="container-width">
+        <div class="max-w-4xl">
+          <div class="text-xs uppercase tracking-[0.22em] text-[#f4d35e] font-semibold">Next Gen Sounds</div>
+          <h2 class="mt-3 text-4xl md:text-6xl text-white">Teens learn by running a real music company.</h2>
+          <p class="mt-6 text-lg text-slate-300 leading-8">
+            This isn’t a classroom model. Students operate inside a real record label environment powered by The Artist’s Cut — creating music, releasing projects, managing campaigns, and learning business by actually doing it.
+          </p>
+        </div>
+
+        <!-- Curriculum Upgrade -->
+        <div class="mt-16 space-y-16">
+
+          <!-- Module 1 -->
+          <div class="grid lg:grid-cols-2 gap-10 items-center">
+            <div>
+              <div class="text-xs uppercase tracking-[0.18em] text-purple-400">MODULE 01</div>
+              <h3 class="mt-3 text-4xl text-white">Creative & Technical</h3>
+              <p class="mt-4 text-slate-400 leading-7">
+                Students build the product. This phase focuses on creation — music, media, and content — using modern tools and AI-assisted workflows.
+              </p>
+              <ul class="mt-6 space-y-3 text-slate-400 list-disc pl-5">
+                <li>AI music generation and prompt engineering</li>
+                <li>Audio production, mixing, and release prep</li>
+                <li>Video production, editing, and storytelling</li>
+                <li>Content packaging for real distribution</li>
+              </ul>
+            </div>
+            <div class="feature-card p-8">
+              <h4 class="text-xl text-white mb-3">What they actually do</h4>
+              <p class="text-slate-400 leading-7">Students don’t just learn tools — they create real songs, real visuals, and real release-ready assets that move directly into the label pipeline.</p>
+            </div>
+          </div>
+
+          <!-- Module 2 -->
+          <div class="grid lg:grid-cols-2 gap-10 items-center">
+            <div class="order-2 lg:order-1 feature-card p-8">
+              <h4 class="text-xl text-white mb-3">This is the difference</h4>
+              <p class="text-slate-400 leading-7">Students are not simulating a business — they are operating inside one. Releases, campaigns, and financial decisions are real.</p>
+            </div>
+            <div class="order-1 lg:order-2">
+              <div class="text-xs uppercase tracking-[0.18em] text-green-400">MODULE 02</div>
+              <h3 class="mt-3 text-4xl text-white">Business & Operations</h3>
+              <p class="mt-4 text-slate-400 leading-7">
+                Students run the label. They manage distribution, analyze data, and execute campaigns tied to real artist releases.
+              </p>
+              <ul class="mt-6 space-y-3 text-slate-400 list-disc pl-5">
+                <li>Distribution workflows (metadata, uploads, DSP delivery)</li>
+                <li>Marketing campaigns and audience growth</li>
+                <li>Royalties, splits, and financial literacy</li>
+                <li>Operational roles inside the label</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Module 3 -->
+          <div class="grid lg:grid-cols-2 gap-10 items-center">
+            <div>
+              <div class="text-xs uppercase tracking-[0.18em] text-blue-400">MODULE 03</div>
+              <h3 class="mt-3 text-4xl text-white">Professional & Leadership</h3>
+              <p class="mt-4 text-slate-400 leading-7">
+                This phase builds the operator. Students develop discipline, leadership, and the mindset required to succeed in real environments.
+              </p>
+              <ul class="mt-6 space-y-3 text-slate-400 list-disc pl-5">
+                <li>Leadership, accountability, and communication</li>
+                <li>Team-based project execution</li>
+                <li>Mentorship from industry professionals</li>
+                <li>Pathway to "Graduate Operator" roles</li>
+              </ul>
+            </div>
+            <div class="feature-card p-8">
+              <h4 class="text-xl text-white mb-3">End result</h4>
+              <p class="text-slate-400 leading-7">Students leave with real experience, real output, and the ability to operate inside a creative business — not just knowledge.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Workflow Timeline -->
+    <section class="py-24 bg-black/20 border-y border-white/5">
+      <div class="container-width">
+        <div class="text-center max-w-3xl mx-auto">
+          <div class="text-xs uppercase tracking-[0.22em] text-[#f4d35e] font-semibold">How It Works</div>
+          <h2 class="mt-3 text-4xl md:text-5xl text-white">A connected pathway from learning to leadership</h2>
+        </div>
+        <div class="mt-14 grid md:grid-cols-3 gap-6">
+          <article class="timeline-card p-8">
+            <div class="text-xs uppercase tracking-[0.18em] text-slate-400">Step 01</div>
+            <h3 class="mt-3 text-3xl text-white">Learn the tools</h3>
+            <p class="mt-4 text-slate-400 leading-7">Students are introduced to AI music workflows, production, media creation, release systems, and professional expectations.</p>
+          </article>
+          <article class="timeline-card p-8">
+            <div class="text-xs uppercase tracking-[0.18em] text-slate-400">Step 02</div>
+            <h3 class="mt-3 text-3xl text-white">Operate the work</h3>
+            <p class="mt-4 text-slate-400 leading-7">Participants move into real assignments tied to active music, marketing, and platform operations.</p>
+          </article>
+          <article class="timeline-card p-8">
+            <div class="text-xs uppercase tracking-[0.18em] text-slate-400">Step 03</div>
+            <h3 class="mt-3 text-3xl text-white">Grow into leadership</h3>
+            <p class="mt-4 text-slate-400 leading-7">Advanced participants take on more ownership, mentorship responsibilities, and stronger operator roles.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Partners / FAQ / Contact -->
+    <section id="contact" class="py-24">
+      <div class="container-width">
+        <div class="grid lg:grid-cols-[1.05fr_0.95fr] gap-8">
+          <div class="section-card rounded-[2rem] p-8 lg:p-10">
+            <div class="text-xs uppercase tracking-[0.22em] text-[#f4d35e] font-semibold">Partnership Opportunity</div>
+            <h2 class="mt-3 text-4xl md:text-5xl text-white">Built for artists, schools, agencies, and sponsors</h2>
+            <p class="mt-6 text-slate-300 leading-8 text-lg">
+              This combined page now presents a startup ecosystem: a venture hub, a live record label, and a workforce development engine operating as one connected system.
+            </p>
+            <div class="mt-8 grid sm:grid-cols-2 gap-4">
+              <div class="faq-card p-5">
+                <h3 class="text-2xl text-white">Who this serves</h3>
+                <p class="mt-3 text-slate-400 leading-7">Independent artists, school districts, youth organizations, workforce agencies, sponsors, and community partners.</p>
+              </div>
+              <div class="faq-card p-5">
+                <h3 class="text-2xl text-white">Why it matters</h3>
+                <p class="mt-3 text-slate-400 leading-7">It blends business, creativity, education, and opportunity into one modern story with clear calls to action.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass rounded-[2rem] p-8 lg:p-10">
+            <div class="text-xs uppercase tracking-[0.22em] text-slate-400">Contact</div>
+            <h3 class="mt-3 text-4xl text-white">Start the conversation</h3>
+            <div class="mt-8 space-y-5">
+              <a href="mailto:contact@cts-management.com" class="cta-button flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 px-5 py-4 hover:bg-white/10">
+                <span class="h-12 w-12 rounded-2xl bg-[#f4d35e] text-[#08111f] grid place-items-center"><i class="fas fa-envelope"></i></span>
+                <span>
+                  <span class="block text-xs uppercase tracking-[0.18em] text-slate-400">Email</span>
+                  <span class="block text-white font-semibold">contact@cts-management.com</span>
+                </span>
+              </a>
+              <a href="mailto:contact@cts-management.com" class="cta-button flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 px-5 py-4 hover:bg-white/10">
+                <span class="h-12 w-12 rounded-2xl bg-[#49dcb1] text-[#08111f] grid place-items-center"><i class="fas fa-graduation-cap"></i></span>
+                <span>
+                  <span class="block text-xs uppercase tracking-[0.18em] text-slate-400">Program Inquiries</span>
+                  <span class="block text-white font-semibold">contact@cts-management.com</span>
+                </span>
+              </a>
+              <div class="rounded-2xl border border-white/10 bg-white/5 px-5 py-4">
+                <div class="text-xs uppercase tracking-[0.18em] text-slate-400">Suggested uses</div>
+                <p class="mt-2 text-slate-300 leading-7">Use this page as a single public-facing experience, or keep building it into a more detailed launch site with forms, analytics, live applications, and custom branding assets.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 py-8">
+      <div class="container-width flex flex-col md:flex-row gap-4 justify-between items-center text-sm text-slate-400">
+        <div>© 2025 CTS Startup Ecosystem. All rights reserved.</div>
+        <div class="flex items-center gap-6">
+          <a href="#top" class="hover:text-white">Back to top</a>
+          <a href="#artists-cut" class="hover:text-white">Artist's Cut</a>
+          <a href="#next-gen" class="hover:text-white">Next Gen Sounds</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    if (menuToggle && mobileMenu) {
+      menuToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+      });
+    }
+  </script>
+</body>
+</html>
